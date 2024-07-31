@@ -6,13 +6,10 @@ class House:
     def __len__(self):
         return self.floor
 
-    def __str__(self):
-        return f'Название: {self.name}, количество этажей - {self.floor}'
 
     def __eq__(self, other):
         if isinstance(other.floor,int):
             return self.floor == other.floor
-
         else:
             print("значение не типа int")
 
@@ -35,16 +32,20 @@ class House:
 
     def __add__(self, value):
         if isinstance(value, int):
-            return self.floor + value
+            return House(self.name, self.floor + value)
         else:
             print("значение value не типа int")
+            return NotImplemented
     def __radd__(self, value):
-        return   value + self.floor
+        return   self + value
 
     def __iadd__(self, value):
+        if isinstance(value, int):
          self.floor += value
-         return self.floor
+         return self
 
+    def __str__(self):
+        return f'Название: {self.name}, количество этажей - {self.floor}'
 
 
 
@@ -60,7 +61,7 @@ print(house1 <= house2)
 print(house1 > house2)
 print(house1 >= house2)
 print(house1 != house2)
-house1 = house1 +10
+house1 = house1 + 10
 print(house1)
 house1 += 15
 print(house1)
@@ -72,3 +73,4 @@ house2 += 15
 print(house2)
 house2 = 13 + house2
 print(house2)
+
