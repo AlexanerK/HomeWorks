@@ -24,7 +24,7 @@ class WordsFinder:
         for words in self.get_all_words().values():
             print(words)
             if self.word in words:
-                j = [words.index(self.word)+1]
+                j = words.index(self.word)+1
                 g.append(j)
         index = dict(zip(self.file_names, g))
         index_dict.update(index)
@@ -36,7 +36,7 @@ class WordsFinder:
         count =[]
         for words in self.get_all_words().values():
             if self.word in words:
-                i = [words.count(self.word)]
+                i = words.count(self.word)
                 count.append(i)
         counts = dict(zip(self.file_names, count))
         count_dict.update(counts)
